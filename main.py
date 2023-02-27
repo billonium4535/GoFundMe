@@ -19,9 +19,12 @@ def get_info():
     driver.get(url)
     if not running:
         driver.implicitly_wait(5)
-        accept_button = driver.find_element(By.ID, "onetrust-accept-btn-handler")
-        accept_button.click()
-        running = True
+        try:
+            accept_button = driver.find_element(By.ID, "onetrust-accept-btn-handler")
+            accept_button.click()
+            running = True
+        except:
+            running = False
 
     driver.refresh()
 
